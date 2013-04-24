@@ -209,27 +209,32 @@ class Application_cl(object):
       try:
           con = mdb.connect('localhost','root','ias2013','ias2013')
           cur = con.cursor()
-          cur.execute('SELECT * FROM personal WHERE mitarbeiternummer ="' + admin +'"');
-          row_x = cur.fetchone()
-
-          if str(row_x[4]) == passwort:
-             if str(row_x[3]) == "Admin":
-                mytemplate = Template(filename = 'html/admin.html', input_encoding = 'utf-8')
-                ausgabe = ausgabe + '<p></p><div class="koerperX">Willkommen ' + str(row_x[0]) + '</div><p></p><p></p><p></p>'
-                cur.execute('SELECT * FROM News ORDER BY Datum DESC')
-                rows = cur.fetchall()
-                for row in rows:
-                   ausgabe = ausgabe + '<div class="newsmother"><div class="koerperX">' + str(row[3]) + '</div>'
-                   ausgabe = ausgabe + '<div class="newsdate">' + str(row[2]) + '<p><a href="#" class="delete" id="' + str(row[1]) + '">delete</a></p></div>'
-                   ausgabe = ausgabe + '<p></p>' + '<div class="newstext">' + str(row[0]) + '<p></p>'
-                   cur.execute('SELECT * FROM personal WHERE Mitarbeiternummer="' + str(row[4]) + '"')
-                   row_y = cur.fetchone()
-                   ausgabe = ausgabe + 'Posted by ' + str(row_y[0]) + '</div><p></p></div>'
-             else:
-                return json.dumps("Keine Zugriffsrechte")   
-            
+          
+          cur.execute('SELECT COUNT(*) FROM personal WHERE mitarbeiternummer = "' + admin + '"')
+          exists = cur.fetchone()
+          if exists[0] == 0:
+            return json.dumps("Nutzer existiert nicht")
           else:
-              return json.dumps("Zugriff verweigert")
+            cur.execute('SELECT * FROM personal WHERE mitarbeiternummer ="' + admin + '"')
+            row_x = cur.fetchone()
+            if str(row_x[4]) == passwort:
+               if str(row_x[3]) == "Admin":
+                  mytemplate = Template(filename = 'html/admin.html', input_encoding = 'utf-8')
+                  ausgabe = ausgabe + '<p></p><div class="koerperX">Willkommen ' + str(row_x[0]) + '</div><p></p><p></p><p></p>'
+                  cur.execute('SELECT * FROM News ORDER BY Datum DESC')
+                  rows = cur.fetchall()
+                  for row in rows:
+                     ausgabe = ausgabe + '<div class="newsmother"><div class="koerperX">' + str(row[3]) + '</div>'
+                     ausgabe = ausgabe + '<div class="newsdate">' + str(row[2]) + '<p><a href="#" class="delete" id="' + str(row[1]) + '">delete</a></p></div>'
+                     ausgabe = ausgabe + '<p></p>' + '<div class="newstext">' + str(row[0]) + '<p></p>'
+                     cur.execute('SELECT * FROM personal WHERE Mitarbeiternummer="' + str(row[4]) + '"')
+                     row_y = cur.fetchone()
+                     ausgabe = ausgabe + 'Posted by ' + str(row_y[0]) + '</div><p></p></div>'
+               else:
+                  return json.dumps("Keine Zugriffsrechte")   
+            
+            else:
+                return json.dumps("Zugriff verweigert")
       except mdb.Error, e:
             print "Error %d: %s " % (e.args[0], e.args[1])
             sys.exit(1)
