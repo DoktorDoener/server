@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<style type="text/css">
+body {
+	background-color: #222222;
+}
+
+#anlegen {
+	
+position: inherit;
+border-color: #ffffff;
+border-width: 2px;
+
+color: white;
+left: 150px;
+width: 300px;
+height: 300px;
+
+}
+
+
+
+#koerper 
+{
+	position: absolute;
+color: white;
+left: 10px;
+
+widht: 600px;
+height: 300px;
+	
+}
+
+#bearbeiten 
+{
+position: inherit;
+color: white;
+right: 150px;
+top: 10px;
+widht: 300px;
+height: 300px;
+	
+}
+</style>
+
+<script>
+function sachbearbeiter_aktion()
+{
+	location.reload()
+}
+</script>
+
+ <script type="text/javascript" src="/js/sachbearbeiter.js"></script>
+
+</head>
+
+<body>
+<p><img src="../images/sacharbeiter.png" alt="Sachbearbeiter Login" name="img_sachbearbeiter" width="611" height="239" id="img_sachbearbeiter" style="display:block; margin-left: auto; margin-right: auto" onclick="sachbearbeiter_aktion()"/></p>
+
+<div id="koerper">
+
+<div id="anlegen">
+
+<h2>Neuen Mitarbeiter Anlegen</h2>
+
+<br><br>
+
+<!--To-Do: An den Server uebergeben-->
+<p>ID: Laufende Nummer</p>
+<br>
+<p>Name: 
+	<input name="neu_m_name" id="neu_m_name" value="neuer Mitarbeiter"/>
+</p>
+<br>
+<p>Rolle: 
+<input type="text" id="rolle_m"/>
+<!--	<label>
+		<input type="radio" name="neu_m_status" value="mitarbeiter" id="neu_m_status_1" checked>Mitarbeiter
+	</label>
+	<label>
+		<input type="radio" name="neu_m_status" value="sachbearbeiter" id="neu_m_status_2">Sachbearbeiter
+	</label>
+</p>
+-->
+
+<p>Passwort:
+<input type="text" id="password"/>
+
+
+
+<br><br>
+
+<input type="button" name="neu_save" id="neu_save" value="Speichern" />
+
+</div>
+
+<div id="bearbeiten">
+
+<h2>Mitarbeiter bearbeiten</h2>
+
+<br><br>
+
+<!--To-Do: Dynamisch auslesen!-->
+<select name="m_bearbeiten" id="m_bearbeiten">
+  <option value="0">Hans Decker: 111</option>
+  <option value="1">Patrick Tognotti: 222</option>
+  <option value="2">Christopher Borchert: 333</option>  
+  <option value="3">Mario Trzensky: 444</option>  
+</select>
+<input type="button" name="m_select" id="m_select" value="Auswaehlen" onclick="SelectWorker()"/>
+
+</div>
+
+
+</div>
+</body>
+</html>

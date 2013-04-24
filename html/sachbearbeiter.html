@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<style type="text/css">
+body {
+	background-color: #222222;
+}
+
+#anlegen {
+	
+position: inherit;
+border-color: #ffffff;
+border-width: 2px;
+
+color: white;
+left: 150px;
+width: 300px;
+height: 300px;
+
+}
+
+#positioner{
+width: 100%;
+text-align:center;
+}
+
+#koerper 
+{
+position: relative;
+display: inline-block;
+color: white;
+left: 10px;
+width: 600px;
+}
+
+#bearbeiten 
+{
+position: inherit;
+color: white;
+right: 150px;
+top: 10px;
+widht: 300px;
+height: 300px;
+	
+}
+
+.ball {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(122,122,255,0.9);
+	opacity:.9;
+	border-top:5px solid rgba(0,0,0,0);
+	border-left:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 35px rgba(0,0,255,1);
+	width:50px;
+	height:50px;
+	margin:0 auto;
+	position:relative;
+	top:20px;
+	-moz-animation:spin 2s infinite linear;
+	-webkit-animation:spin 2s infinite linear;
+}
+
+.ball1 {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(122,122,255,0.9);
+	opacity:.9;
+	border-top:5px solid rgba(0,0,0,0);
+	border-left:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 15px rgba(0,0,255,1); 
+	width:30px;
+	height:30px;
+	margin:0 auto;
+	position:relative;
+	top:-30px;
+	-moz-animation:spinoff 3s infinite linear;
+	-webkit-animation:spinoff 3s infinite linear;
+}
+
+@-moz-keyframes spin {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(360deg); }
+}
+@-moz-keyframes spinoff {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(-360deg); }
+}
+@-webkit-keyframes spin {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
+}
+@-webkit-keyframes spinoff {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(-360deg); }
+}
+.wrapper{
+width: 100%;
+text-align: center;
+}
+#login_area{
+width: 300px;
+height: 150px;
+display:inline-block;
+background-color:rgba(122,122,122,0.5);
+border-radius: 20px;
+}
+
+body{
+/*background-image:url(http://wallpaper-fullhd.com/wp-content/uploads/2013/03/hd-wallpapers-desktop-background-free-sea3.jpg);*/
+color:#CCF;
+}
+#login{
+}
+input{
+border-radius: 10px;
+}
+#verifying{
+	font-family: verdana;
+	-moz-animation:lightit 3s infinite linear;
+	text-shadow: 0 0 15px #FFF;
+	-webkit-animation:lightit 3s infinite linear;
+}
+
+@-moz-keyframes lightit {
+	0% { text-shadow: 0 0 15px #FFF); color:#06F;}
+	50% { text-shadow: 0px 0px 20px #00F;color:#FFF; }
+	100% { text-shadow: 0 0 15px #FFF; color:#06F; }
+	
+}
+
+@-webkit-keyframes lightit {
+	0% { text-shadow: 0 0 15px #FFF); color:#06F;}
+	50% { text-shadow: 0px 0px 20px #00F;color:#FFF; }
+	100% { text-shadow: 0 0 15px #FFF; color:#06F; }
+}
+
+#wrong{
+	font-family: verdana;
+	text-shadow: 0 0 15px #FFF;
+	font-size:20px;
+	margin:50px;
+	-webkit-animation:redit 3s infinite linear;
+}
+
+@-moz-keyframes redit {
+	0% { text-shadow: 0 0 15px #FFF); color:#F60;}
+	50% { text-shadow: 0px 0px 20px #F00;color:#FFF; }
+	100% { text-shadow: 0 0 15px #FFF; color:#F60; }
+	
+}
+
+@-webkit-keyframes redit {
+	0% { text-shadow: 0 0 15px #FFF); color:#F60;}
+	50% { text-shadow: 0px 0px 20px #F00;color:#FFF; }
+	100% { text-shadow: 0 0 15px #FFF; color:#F60; }
+}
+
+
+</style>
+
+<script>
+function sachbearbeiter_aktion()
+{
+	location.reload()
+}
+</script>
+
+ <script type="text/javascript" src="/js/sachbearbeiter.js"></script>
+
+</head>
+
+<body>
+<p><img src="../images/sacharbeiter.png" alt="Sachbearbeiter Login" name="img_sachbearbeiter" width="611" height="239" id="img_sachbearbeiter" style="display:block; margin-left: auto; margin-right: auto" onclick="sachbearbeiter_aktion()"/></p>
+<div id="positioner">
+<div id="koerper">
+
+<div id="login_area">
+<br/>
+User-ID<br/><input type="text" id="user" style="border-radius: 5px"/><br/>
+Passwort<br/><input type="password" id="password" style="border-radius: 5px"/><br/>
+<input type="submit" id="login_x" value="login" style="border-radius: 5px"/>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>IAS SS 2013 / Praktikum 1</title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+         @import url('/css/main.css');
+      </style>
+
+
+<style>
+body{
+background-color: #222222;
+}
+div{
+color:#CCCCCC;
+border-style:solid;
+border-width:1px;
+border-color:#AAAAAA;	
+}
+#Tastenfeld{
+width:300px;
+height:500px;
+position: absolute;
+background-color:#333333;
+left: 5%;
+right: 20%;
+border-width:1px;
+text-align:center;
+font-family:Arial;
+font-size:40px;
+margin:0px;
+cursor:pointer;
+}
+
+h1{
+text-align:center;
+font-family:Arial;
+font-size:40px;
+vertical-align:middle;
+}
+
+#headline{
+text-align:center;
+font-family:Arial;
+font-size:60%;
+height:8%;
+vertical-align:middle;
+}
+
+#delete{
+position:inherit;
+bottom:0%;
+left:0%;	
+width:33%;
+top:80%;
+background-image:url(./images/cancel.png);
+color:#000000;
+}
+#eingabe{
+position:inherit;
+bottom:0%;
+right:0%;	
+width:33%;
+top:80%;
+background-image:url(./images/confirm.png);
+color:#000000;
+}
+
+#TArea{
+position:inherit;
+vertical-align:middle;
+top:8%;
+height:12%;
+width:99.5%;
+column-width:100%;
+}
+
+#Zahl1:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl2:active{
+background-image:url(./images/button-exposed.png);
+}
+#Zahl3:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl4:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl5:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl6:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl7:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl8:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl9:active {
+background-image:url(./images/button-exposed.png);
+}
+#Zahl0:active {
+background-image:url(./images/button-exposed.png);
+}
+#eingabe:active {
+background-image:url(./images/confirm-exposed.png);
+}
+#delete:active {
+background-image:url(./images/cancel-exposed.png);
+}
+
+#Zahl1{
+position:inherit;
+left:0%;
+top:20%;
+width: 33%;
+height:20%;
+background-image:url(./images/button.png);
+}
+
+#Zahl2{
+position:inherit;
+left:33%;
+right:33%;
+top: 20%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl3{
+position:inherit;
+right:0%;
+top:20%;
+width: 33%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl4{
+position:inherit;
+left:0%;
+top:40%;
+width: 33%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl5{
+position:inherit;
+left:33%;
+right: 33%;
+top:40%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl6{
+position:inherit;
+right: 0%;
+top:40%;
+width: 33%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl7{
+position:inherit;
+left: 0%;
+top:60%;
+width: 33%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl8{
+position:inherit;
+left: 33%;
+right: 33%;
+top:60%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl9{
+position:inherit;
+right: 0%;
+top:60%;
+width: 33%;
+height: 20%;
+background-image:url(./images/button.png);
+}
+#Zahl0{
+position:inherit;
+right: 33%;
+left: 33%;
+top:80%;
+bottom: 0%;
+background-image:url(./images/button.png); 
+}
+#auswahl{
+position: absolute;
+width: 150;
+right: -190px;
+border-width: 2px;
+top: -1px;	
+}
+
+#mitarbeiter_typ{
+font-size: 12px;
+text-align: left;
+}
+#sachbearbeiter{
+font-size: 12px;
+text-align: left;
+}
+
+#menu_sachbearbeiter
+{	
+	position: absolute;
+	width:400px;
+	height:500px;
+	left: 185px;
+	border-width: 2px;
+	top: -2px;
+	text-align: left;
+	font-size: 12px;
+	text-align: left;
+}
+
+#buttons{
+position:absolute;
+width:100%;
+height:89px;
+border-width: 2px;
+border-type: solid;
+
+}
+
+#ok:active {
+background-image:url(./images/ok-exposed.png);
+}
+
+#logout_button:active {
+background-image:url(./images/logout-exposed.png);
+}
+
+#ok{
+position:inherit;
+border-type: solid;
+bottom:0%;
+right:0%;	
+width:50%;
+height:100%;
+background-image:url(./images/ok.png);
+background-size: 100% auto;
+color:#000000;
+}
+
+#logout_button{
+position:inherit;
+border-type: solid;
+bottom:0%;
+left:0%;	
+width:50%;
+height:100%;
+background-image:url(./images/logout.png);
+background-size: 100% auto;
+color:#000000;
+}
+
+
+</style>
+      
+      <script type="text/javascript" src="/js/jquery.js"></script>
+      <script type="text/javascript" src="/js/inheritance.js"></script>
+      <script type="text/javascript" src="/js/app.js"></script>
+      <script type="text/javascript" src="/js/tastenfeld.js"></script>
+      <script type="text/javascript" src="/js/admin.js"></script>
+	  <script type="text/javascript" src="/js/mitarbeiter.js"></script> 
+   </head>
+   <body>
+<div id="Tastenfeld">
+<div id="headline">Rfid-Simulator Alpha v0.1.2.1</div>
+<div id="TArea"><h1 id="passwd"></h1></div>
+<div id="Zahl1" onclick="val1('1')">
+<h1>1</h1>
+</div>
+<div id="Zahl2" onclick="val1('2')">
+<h1>2</h1>
+</div>
+<div id="Zahl3" onclick="val1('3')">
+<h1>3</h1>
+</div>
+<div id="Zahl4" onclick="val1('4')">
+<h1>4</h1>
+</div>
+<div id="Zahl5" onclick="val1('5')">
+<h1>5</h1>
+</div>
+<div id="Zahl6" onclick="val1('6')">
+<h1>6</h1>
+</div>
+<div id="Zahl7" onclick="val1('7')">
+<h1>7</h1>
+</div>
+<div id="Zahl8" onclick="val1('8')">
+<h1>8</h1>
+</div>
+<div id="Zahl9" onclick="val1('9')">
+<h1>9</h1>
+</div>
+<div id="Zahl0" onclick="val1('0')">
+<h1>0</h1>
+</div>
+<div title= "Löschen" id="delete" onclick="val1('delete')">
+<h1>✘</h1>
+</div>
+<div title = "Bestätigen" id="eingabe" onclick="val1('eingabe')">
+<h1>✔</h1>
+</div>
+
+<div id="auswahl">
+
+<div id="mitarbeiter_typ">
+<form name="form1" method="post" action="">
+  <p>
+    <label>
+      <input type="radio" name="typ" value="mitarbeiter" id="typ_0">
+      Mitarbeiter</label>
+    <br>
+    <label>
+      <input type="radio" name="typ" value="sachbearbeiter" id="typ_1">
+      Sachbearbeiter</label>
+    <br>
+  <div id="secret"></div>
+  </p>
+</form>
+</div>
+
+<div id="mitarbeiter">
+<select name="start_stop" id="start_stop" size="2">
+  <option value="0">Beginn</option>
+  <option value="1">Ende</option>
+</select>
+
+<select name="action" id="art" size="2">
+  <option value="0">Arbeit</option>
+  <option value="1">Pause</option>
+  <option value="2">Dienstreise</option>  
+</select>
+</div>
+
+<div id="sachbearbeiter">
+<form name="form_sb" method="post" action="">
+			<p>
+				Mitarbeiter...
+				<p>
+				<label>
+					<input type="radio" name="sb_aktion" value="anlegen" id="sb_aktion_anlegen">
+					anlegen
+				</label>
+					<br>
+			
+				<label>
+					<input type="radio" name="sb_aktion" value="bearbeiten" id="sb_aktion_bearbeiten">
+					bearbeiten
+				</label>
+					<br>
+				
+				<label>
+					<input type="radio" name="sb_aktion" value="loeschen" id="sb_aktion_loeschen">
+					löschen
+				</label>
+			</p>
+		</form>
+	<!-- <p>
+		Mitarbeiter...
+	</p>
+	<p>
+		<button id="anlegen">anlegen</button>
+	</p>
+	<p>
+		<button id="bearbeiten">bearbeiten</button>
+	</p>
+	<p>
+		<button id="loeschen">löschen</button>
+	</p>	
+		 -->
+	<div id="menu_sachbearbeiter">
+	</div>			
+		
+</div>
+<select name="mitarbeiter" id="mitarbeiter_id">
+  <option value="X">Name auswählen...</option>
+  <option value="0">Hans Decker: 111</option>
+  <option value="1">Patrick Tognotti: 222</option>
+  <option value="2">Christopher Borchert: 333</option>
+  <option value="3">Mario Trzensky: 444</option>    
+</select>
+
+<div id= "buttons">
+		<div id="logout_button"></div>
+		<div id="ok" onclick="mitarbeiter_aktion('weiter')"></div>
+</div>
+
+</div>
+
+
+</div>
+		
+
+   </body>
+</html>
+
+
+

@@ -1,0 +1,24 @@
+<h2>Neuen Mitarbeiter Anlegen</h2>
+
+<br><br>
+
+<!--To-Do: An den Server uebergeben-->
+<p>ID: Laufende Nummer</p>
+<br>
+<p>Name: 
+	<input name="neu_m_name" id="neu_m_name" value="Max Mustermann"/>
+</p>
+<br>
+<p>Status: 
+	<label>
+		<input type="radio" name="neu_m_status" value="mitarbeiter" id="neu_m_status_1" checked>Mitarbeiter
+	</label>
+	<label>
+		<input type="radio" name="neu_m_status" value="sachbearbeiter" id="neu_m_status_2">Sachbearbeiter
+	</label>
+</p>
+
+<br><br>
+
+<input type="button" name="neu_save" id="neu_save" value="Speichern" onclick="SaveNewWorker()"/>
+

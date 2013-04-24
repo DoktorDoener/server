@@ -1,0 +1,6 @@
+<div id="kopf">Aktueller Status: ${test}</div>
+<div id="optionen">
+<div id="d2p" alt="" onclick="mitarbeiter_aktion('d2p')"/>
+<div id="d2w" alt="" onclick="mitarbeiter_aktion('d2w')"/>
+<div id="nowork" alt="" onclick="mitarbeiter_aktion('nowork')"/>
+</div>

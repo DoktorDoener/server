@@ -1,0 +1,12 @@
+﻿Arbeit Beginn
+
+Arbeit-Beginn -> Arbeit Ende
+Arbeit-Beginn -> Arbeit-Ende/Pause-Beginn
+Arbeit-Beginn -> Arbeit-Ende/Dienstreise-Beginn
+
+Dienstreise -> Dienstreise-Ende/Pause-Beginn
+Dienstreise -> Dienstreise-Ende/Arbeit-Ende
+Dienstreise -> Dienstreise-Ende/Arbeit-Beginn
+
+Pause-Beginn -> Pause-Ende/Arbeit-Beginn
+Pause-Beginn -> Pause-Ende/Dienstreise-Beginn

@@ -1,0 +1,516 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>Administration</TITLE>
+<STYLE>
+body{
+color:white;	
+}
+
+#menu{
+	width: 100%;
+	margin: 0;
+	padding: 10px 0 0 0;
+	list-style: none;  
+	background:rgba(40, 40, 40, 0.2);
+	background: -moz-linear-gradient(rgba(40, 40, 40, 0.2), rgba(122,66,255,0.9)); 
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, rgba(40, 0, 0, 0.2))color-stop(1, rgba(122,66,255,0.9)));	
+	background: -webkit-linear-gradient(rgba(40, 40, 40, 0.2), rgba(122,66,255,0.9));	
+	background: -o-linear-gradient(rgba(40, 40, 40, 0.2), rgba(122,66,255,0.9));
+	background: -ms-linear-gradient(rgba(40, 40, 40, 0.2), rgba(122,66,255,0.9));
+	background: linear-gradient(rgba(40, 40, 40, 0.2), rgba(122,66,255,0.9));
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	-moz-box-shadow: 0 2px 1px #9c9c9c;
+	-webkit-box-shadow: 0 2px 1px #9c9c9c;
+	box-shadow: 0 2px 1px #9c9c9c;
+}
+
+#menu li{
+	float: left;
+	padding: 0 0 10px 0;
+	position: relative;
+}
+
+#menu a{
+	float: left;
+	height: 25px;
+	padding: 0 25px;
+	color: #999;
+	text-transform: uppercase;
+	font: bold 12px/25px Arial, Helvetica;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #000;
+}
+
+#menu li:hover > a{
+	color: #fafafa;
+}
+
+*html #menu li a:hover{ /* IE6 */
+	color: #fafafa;
+}
+
+#menu li:hover > ul{
+	display: block;
+}
+
+/* Sub-menu */
+
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;    
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 99999;    
+    background: rgba(40, 0, 0, 0.4);
+    background: -moz-linear-gradient(rgba(40, 0, 0, 0.4), #111);
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, rgba(122,66,255,0.9)));
+    background: -webkit-linear-gradient(rgba(122,66,255,0.9), #111);    
+    background: -o-linear-gradient(rgba(122,66,255,0.9), #111);	
+    background: -ms-linear-gradient(rgba(122,66,255,0.9), #111);	
+    background: linear-gradient(rgba(122,66,255,0.9)), #111);	
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menu ul li{
+    float: none;
+    margin: 0;
+    padding: 0;
+    display: block;  
+    -moz-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    -webkit-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+}
+
+#menu ul li:last-child{   
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;    
+}
+
+#menu ul a{    
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+    text-transform: none;
+}
+
+
+
+#menu ul a:hover{
+    background: rgba(122,66,255,0.9);
+	background: -moz-linear-gradient(rgba(122,66,255,0.9),  rgba(0,0,0,0));	
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(122,66,255,0.9)), to(rgba(0,0,0,0)));
+	background: -webkit-linear-gradient(rgba(122,66,255,0.9), rgba(0,0,0,0));
+	background: -o-linear-gradient(rgba(122,66,255,0.9)),  rgba(0,0,0,0));
+	background: -ms-linear-gradient(rgba(122,66,255,0.9), rgba(0,0,0,0));
+	background: linear-gradient(rgba(122,66,255,0.9),  rgba(0,0,0,0));
+}
+
+#menu ul li:first-child a{
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+#menu ul li:first-child a:after{
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+#menu ul li:first-child a:hover:after{
+    border-bottom-color: #04acec; 
+}
+
+#menu ul li:last-child a{
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Clear floated elements */
+#menu:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+#menu ul li:first-child a:after{
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
+}
+
+
+#menu ul li:first-child a:hover:after{
+    border-bottom-color: rgba(122,66,255,0.9); 
+}
+
+.tabelle{
+position: absolute;
+text-align:center;
+top:60px;
+left:0%;
+bottom:75%;
+height: auto;
+width:100%;
+}
+
+#projekt_table{
+	
+}
+
+table{
+	border-radius: 10px;
+	overflow: hidden;
+	width:100%;	
+	Text-align:center;
+	border-style:none;
+	border-width: 1px;
+	border-color:#6678b1;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	background: rgba(255,255,255,0.3);
+	border-collapse: collapse;
+	text-align: left;
+}
+
+th{
+	font-size: 19px;
+	font-weight: normal;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;	
+}
+
+tr{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+	border-bottom: 1px solid #6678b1;	
+}
+
+table tr:last-child{
+	border-style:none;
+}
+
+td{
+	border-style:none;
+	padding: 5px;
+	padding-left:10px;
+}
+
+#who{
+
+position: relative;
+top:30px;
+}
+
+#positioner{
+width: 100%;
+height: auto;
+text-align:center;
+}
+
+#logout_x{
+position:absolute;
+left: 80%;
+}
+
+.koerperX 
+{
+position: relative;
+text-align:center;
+color: white;
+left: 10px;
+width: 100%;
+Font-Size: 40px;
+-webkit-animation:highlight 5s infinite linear;
+}
+
+@-moz-keyframes highlight {
+	0% { text-shadow: 0 0 15px #FFF);}
+	50% { text-shadow: 0px 0px 20px #00F;}
+	100% { text-shadow: 0 0 15px #FFF;}
+/*0%{
+color:#F00;	
+}
+16.5%{
+color:#F60;	
+}
+33%{
+color:#FF3;	
+}
+50%{
+color:#6F0;	
+}
+66%{
+color:#39C;
+}
+83%{
+color:#30F;
+}
+100%{
+color:#F00;	
+}*/
+}
+
+@-webkit-keyframes highlight {
+	0% { text-shadow: 0 0 15px #FFF);}
+	50% { text-shadow: 0px 0px 20px #00F;}
+	100% { text-shadow: 0 0 15px #FFF;}
+/*0%{
+color:#F00;	
+}
+16.5%{
+color:#F60;	
+}
+33%{
+color:#FF3;	
+}
+50%{
+color:#6F0;	
+}
+66%{
+color:#39C;
+}
+83%{
+color:#30F;
+}
+100%{
+color:#F00;	
+}*/
+}
+
+.newsmother{
+border-radius: 15px;
+display: inline-block;
+background-color: rgba(255,255,255,0.2);
+padding: 25px;
+margin: 50px;
+margin-left: 35%;
+margin-right: 35%;
+width: 30%;
+/*-webkit-animation:background 0.5s infinite linear;*/
+}
+
+@-moz-keyframes background {
+/*0%{
+color:#F00;	
+background-color:#6F0;
+}
+16.5%{
+color:#F60;	
+background-color:#39C;
+}
+33%{
+color:#FF3;	
+background-color:#30F;
+}
+50%{
+color:#6F0;	
+background-color:#F00;
+}
+66%{
+color:#39C;
+background-color:#F60;
+}
+83%{
+color:#30F;
+background-color:#FF3;
+}
+100%{
+color:#F00;	
+background-color:#6F0;
+
+}*/
+}
+
+@-webkit-keyframes background {
+/*%{
+color:#F00;	
+background-color:#6F0;
+}
+16.5%{
+color:#F60;	
+background-color:#39C;
+}
+33%{
+color:#FF3;	
+background-color:#30F;
+}
+50%{
+color:#6F0;	
+background-color:#F00;
+}
+66%{
+color:#39C;
+background-color:#F60;
+}
+83%{
+color:#30F;
+background-color:#FF3;
+}
+100%{
+color:#F00;	
+background-color:#6F0;
+
+}*/
+}
+
+.newsdate{
+position: relative;
+text-align:center;
+color: white;
+left: 10px;
+width: 100%;
+Font-Size: 10px;
+height: 30px;
+}
+
+.newstext{
+position: relative;
+display: inline-block;
+text-align:center;
+left: 10px;
+color: white;
+width: 100%;
+Font-Size: 15px;
+}
+
+.tabelle2{
+
+position: absolute;
+text-align:center;
+left:0%;
+bottom:auto;
+top: auto;
+width:100%;
+
+}
+
+.unselectable{
+	position: absolute;
+	visibility:hidden;
+	z-index:-1;
+}
+
+
+a{
+rgba(122,66,255,0.9);
+}
+
+a:visited{
+rgba(122,66,255,0.9);
+}
+
+.modal{
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	vertical-align:middle;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	display:none;
+	z-index:99;
+}
+
+.modalspacer{
+ height: 40%;
+ width: 100%;	
+}
+
+.modalpopup{
+	font-family:Verdana;
+	display:inline-block;
+	color:#000;
+	height: 100px;
+	width: 300px;
+	background-color:rgba(255,255,255,0.9);
+	box-shadow: 0px 0px 20px rgba(255,255,255,0.9);
+	border-radius: 20px;
+ 	
+}
+
+.box{
+	font-size: 20px;
+	padding: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 40%;
+	margin-right: 40%;
+	width: 20%;
+	font-family:Verdana;
+	background-color:rgba(255,255,255,0.2);
+	border-radius: 20px;
+}
+
+</STYLE>
+      <script type="text/javascript" src="/js/jquery.js"></script>
+      <script type="text/javascript" src="/js/inheritance.js"></script>
+      <script type="text/javascript" src="/js/app.js"></script>
+      <script type="text/javascript" src="/js/tastenfeld.js"></script>
+      <script type="text/javascript" src="/js/admin.js"></script>
+	  <script type="text/javascript" src="/js/mitarbeiter.js"></script>
+      <script type="text/javascript" src="/js/connector.js"></script>
+	  <script type="text/javascript" src="/js/sachbearbeiter.js"></script>
+</HEAD>
+
+<BODY>
+
+
+<ul id="menu">
+	<li><a href="#">News</a><ul>
+		<li><a href="#" id="news">Anzeigen</a></li>
+		<li><a href="#" id="deliver_new_news">Erstellen</a></li>
+		</ul>
+		</li>
+	<li>
+		<a href="#">User</a>
+		<ul>
+			<li><a href="#" id="deliver_new">Erstellen</a></li>
+			<li><a href="#" id="edit_user">Bearbeiten</a></li>
+			<li><a href="#" id="projekt_zuordnen">Projekte zuordnen</a></li>
+			<li><a href="#" id="deliver_id">Zeiten anzeigen</a></li>
+		</ul>
+        <li><a href="#" id="Restart">Restart</a></li>
+	</li>
+	<li><a href="#" id="logout_x">Logout</a></li>
+</ul>
+
+
+<div class="modal"><div class="modalspacer"></div><div class="modalpopup"><p>Wirklich löschen?</p>
+<input type="submit" value="ja" style="width: 60px" id="confirm"></input><input type="submit" value="abbrechen" id="cancel"></input></div></div>
+
+
+<div id="positioner">
+		${News}
+	</div>	
+		<div class="tabelle2"></div>
+</BODY>
+</HTML>
