@@ -27,7 +27,7 @@ class Application_cl(object):
       con = None
       ausgabe =""
       try:
-            con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013');
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013');
             cur = con.cursor()
 
             cur.execute('SELECT * FROM personal')
@@ -67,7 +67,7 @@ class Application_cl(object):
       con = None
       
       try:
-            con = mdb.connect('localhost', 'root',  'ias2013', 'ias2013')
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
             cur = con.cursor()
             
             cur.execute('SELECT * FROM personal WHERE mitarbeiternummer = "' + mitarbeiternummer + '"');
@@ -103,7 +103,7 @@ class Application_cl(object):
    #-------------------------------------------------------
       con = None
       try:
-          con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013');
+          con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013');
           cur = con.cursor()
           date = datetime.datetime.today()
 
@@ -137,7 +137,7 @@ class Application_cl(object):
       con = None
       ausgabe = ""
       try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 		   
            cur.execute('SELECT mitarbeitername FROM personal WHERE mitarbeiternummer ="' + id + '"')
@@ -164,9 +164,9 @@ class Application_cl(object):
    #-------------------------------------------------------
        con = None
        try:
-            con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
             cur = con.cursor()
-            cur.execute('DELETE FROM projekt where nummer ="' + id + '"')
+            cur.execute('DELETE FROM projekt WHERE nummer ="' + id + '"')
             con.commit()
        except mdb.Error, e:
             print "Error %d: %s" % (e.args[0], e.args[1])
@@ -182,7 +182,7 @@ class Application_cl(object):
    #-------------------------------------------------------
        con = None
        try:
-            con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
             cur = con.cursor()
 			
             cur.execute('SELECT mitarbeitername FROM personal WHERE mitarbeiternummer ="' + id + '"')
@@ -207,7 +207,7 @@ class Application_cl(object):
       con = None
       ausgabe = ""
       try:
-          con = mdb.connect('localhost','root','ias2013','ias2013')
+          con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
           cur = con.cursor()
           
           cur.execute('SELECT COUNT(*) FROM personal WHERE mitarbeiternummer = "' + admin + '"')
@@ -250,7 +250,7 @@ class Application_cl(object):
    #----------------------------------------------------------
        con = None
        try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 
            cur.execute("DELETE FROM zeiterfassung WHERE id=%s", (id))
@@ -276,14 +276,14 @@ class Application_cl(object):
       zeit = datetime.datetime.today()-datetime.datetime.today()
       zeitw = datetime.datetime.today()-datetime.datetime.today()
       try:
-            con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
             cur = con.cursor()
 
-            cur.execute('SELECT * FROM zeiterfassung WHERE mitarbeiternummer = "' + mitarbeiternummer +'" ORDER BY ' + order + '  ' + direction)
+            cur.execute('SELECT * FROM zeiterfassung WHERE mitarbeiternummer = "' + mitarbeiternummer +'" ORDER BY ' + order + ' ' + direction)
             rows = cur.fetchall()
             ausgabe = ausgabe + '<table><tr><th class="tid">UID</th>'
-            ausgabe = ausgabe + '<th class="state">Status</th>'
-            ausgabe = ausgabe + '<th class="begin">Anfang</th>'
+            ausgabe = ausgabe + '<th class="state" onClick="sortierte_ausgabe()">Status</th>'
+            ausgabe = ausgabe + '<th class="begin" onClick="sortierte_ausgabe_anfang()">Anfang</th>'
             ausgabe = ausgabe + '<th class="end">Ende</th>'
             ausgabe = ausgabe + '<th class="zeit">Zeit</th>'
             ausgabe = ausgabe + '<th class="del">Löschen</th>'
@@ -320,7 +320,7 @@ class Application_cl(object):
        con = None
        ausgabe = ""
        try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
            cur.execute('SELECT * FROM personal')
 
@@ -342,29 +342,10 @@ class Application_cl(object):
    deliver_id.exposed = True
 
    #----------------------------------------------------------
-   def DBS(self):
-   #----------------------------------------------------------
-
-       con = None
-       try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
-           cur = con.cursor()
-
-           cur.execute('') 
-           print cur;
-       except mdb.Error, e:
-           print "Error %d: %s " % (e.args[0], e.args[1])
-           sys.exit(1)
-       finally:
-          if con:
-              con.close()
-   DBS.exposed = True
-
-   #----------------------------------------------------------
    def edit_time_submit(self, status, a_y, a_mo, a_d, a_h, a_mi, a_s, e_y, e_mo, e_d, e_h, e_mi, e_s, projekt, id):
    #----------------------------------------------------------
         try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 
            anfang = datetime.datetime(int(a_y), int(a_mo), int(a_d), int(a_h), int(a_mi), int(a_s))
@@ -390,7 +371,7 @@ class Application_cl(object):
    #----------------------------------------------------------
       con = None
       try:
-         con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+         con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
          cur = con.cursor()
          cur.execute('SELECT mitarbeitername FROM personal WHERE mitarbeiternummer = "' + id + '"')
          name = cur.fetchone()
@@ -415,7 +396,7 @@ class Application_cl(object):
        ausgabe = ""
        con = None
        try:
-           con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
            
            cur.execute('SELECT * FROM zeiterfassung WHERE id="' + id + '"')
@@ -423,25 +404,25 @@ class Application_cl(object):
            row = cur.fetchone()
 
            #Status-----
-           ausgabe = ausgabe + '<p>Status</p><input type="text" id="status_ed" value="' + str(row[0]) + '"></input>'
+           ausgabe = ausgabe + '<p><strong>Status</strong></p><input type="text" id="status_ed" value="' + str(row[0]) + '"></input>'
            #Datum-Anfang-----
-           ausgabe = ausgabe + '<p>Anfang</p><p>Datum: <input type="text" style="width: 30px;" id="anfang_year" value="' + str(row[1].year) + '"></input>'
+           ausgabe = ausgabe + '<p><strong>Anfang</p><p>Datum: </strong><input type="text" style="width: 30px;" id="anfang_year" value="' + str(row[1].year) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="anfang_month" value="' + str(row[1].month) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="anfang_day" value="' + str(row[1].day) + '"></input>'
            #Zeit-Anfang-----
-           ausgabe = ausgabe + '<p>Zeit: <input type="text" style="width: 20px;" id="anfang_hour" value="' + str(row[1].hour) + '"></input>'
+           ausgabe = ausgabe + '<p><strong>Zeit: </strong><input type="text" style="width: 20px;" id="anfang_hour" value="' + str(row[1].hour) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="anfang_minute" value="' + str(row[1].minute) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="anfang_second" value="' + str(row[1].second) + '"></input></p>'
            #Datum-Ende-----
-           ausgabe = ausgabe + '<p>Ende</p><p>Datum: <input type="text" style="width: 30px;" id="ende_year" value="' + str(row[2].year) + '"></input>'
+           ausgabe = ausgabe + '<p><strong>Ende</p><p>Datum: </strong><input type="text" style="width: 30px;" id="ende_year" value="' + str(row[2].year) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="ende_month" value="' + str(row[2].month) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="ende_day" value="' + str(row[2].day) + '"></input>'
            #Zeit-Ende-----
-           ausgabe = ausgabe + '<p>Zeit: <input type="text" style="width: 20px;" id="ende_hour" value="' + str(row[2].hour) + '"></input>'
+           ausgabe = ausgabe + '<p><strong>Zeit: </strong><input type="text" style="width: 20px;" id="ende_hour" value="' + str(row[2].hour) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="ende_minute" value="' + str(row[2].minute) + '"></input>'
            ausgabe = ausgabe + '<input type="text" style="width: 20px;" id="ende_second" value="' + str(row[2].second) + '"></input>'
            #Projekt-----
-           ausgabe = ausgabe + '<p>Projekt</p><input type="text" id="project_ed" value="' + str(row[5]) + '"></input>'
+           ausgabe = ausgabe + '<div class="unselectable"><p>Projekt</p><input type="text" id="project_ed" value="' + str(row[5]) + '"></input></div>'
            #Submit-----
            ausgabe = ausgabe + '<p></p><input type="submit" class="submit_ed" id="'+ str(row[4]) + '" value="Submit"/>'
        except mdb.Error, e:
@@ -459,7 +440,7 @@ class Application_cl(object):
       ausgabe =""
       con = None
       try:
-          con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+          con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
           cur = con.cursor()
           cur.execute('SELECT * FROM personal WHERE mitarbeiternummer = "' + id +'"')
           name = cur.fetchone()
@@ -497,7 +478,7 @@ class Application_cl(object):
       con = None
       ausgabe = ""
       try:
-            con = mdb.connect('localhost', 'root', 'ias2013', 'ias2013')
+            con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
             #cur = con.insert_id()
             cur = con.cursor()
 
@@ -525,14 +506,14 @@ class Application_cl(object):
       return json.dumps(template_s)
    deliver_new_news.exposed = True
 
-
+   # Formular aufbauen
    #-------------------------------------------------------
    def edit_user_send(self, id):
    #-------------------------------------------------------   
        mytemplate = Template(filename = 'html/Edit_User_Template.html', input_encoding = 'utf-8')
        con = None
        try:
-           con = mdb.connect('localhost', 'root','ias2013','ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 
            cur.execute('SELECT * FROM personal WHERE Mitarbeiternummer= "' + id + '"')
@@ -551,12 +532,13 @@ class Application_cl(object):
 
    edit_user_send.exposed = True
 
+   # Formular absenden
    #-------------------------------------------------------
    def edit_user_submit(self, id, Name, Rolle, Passwort, PIN):
    #-------------------------------------------------------
        con = None
        try:
-          con = mdb.connect('localhost', 'root','ias2013','ias2013')
+          con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
           cur = con.cursor()
 
           cur.execute('UPDATE personal SET mitarbeitername ="' + Name +'" WHERE mitarbeiternummer = "' + id + '"')
@@ -584,7 +566,7 @@ class Application_cl(object):
    #-------------------------------------------------------
        con = None
        try:
-           con = mdb.connect('localhost', 'root','ias2013','ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 
            cur.execute("DELETE FROM News WHERE Nr=%s", (id))
@@ -610,7 +592,7 @@ class Application_cl(object):
        ausgabe = ""
        Date = datetime.datetime.today()
        try:
-           con = mdb.connect('localhost', 'root','ias2013','ias2013')
+           con = mdb.connect('db4free.net', 'ias2013', 'ias2013', 'ias2013')
            cur = con.cursor()
 
            cur.execute('INSERT INTO News(News, Datum, Titel, UID) VALUES("' + Text + '","' + str(Date) + '","' + Titel + '","' + Name +'")')

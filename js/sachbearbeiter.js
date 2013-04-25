@@ -21,7 +21,7 @@
 					setCookie("passwort", passwort);
 					setTimeout(function () {
 					$('body').html(data);
-					}, 5000); //Verzögerung des Login-Prozesses
+					}, 3000); //Verzögerung des Login-Prozesses
 						$('.delete').bind('click', delnewsbind);		//Binden der Funktion um Newseinträge zu löschen
 					}
 				else if(data == "Zugriff verweigert"){			
@@ -57,7 +57,7 @@
 					setCookie("passwort", passwort);
 					setTimeout(function () {
 					$('body').html(data);
-						}, 5000);
+						}, 3000);
 						$('.delete').bind('click', delnewsbind);
 					}
 				else if(data == "Zugriff verweigert"){
@@ -94,7 +94,7 @@
 					setCookie("passwort", passwort);
 					setTimeout(function () {
 					$('body').html(data);
-					}, 5000);
+					}, 3000);
 						$('.delete').bind('click', delnewsbind);
 					}
 				else if(data == "Zugriff verweigert"){
@@ -172,6 +172,7 @@
 		
 		$("#cancel").click(function(){
 			$(".modal").css("display", "none");
+			$("#confirm").unbind();
 		});
 	
 		
@@ -244,8 +245,9 @@
 	}
 	
 	function optbind(){
+	var sortierung = "anfang"; // anfang
 	var id = $("#mitarbeiter_id").val();
-			$.getJSON("tabelle_ausliefern",{mitarbeiternummer: id, order: "anfang", direction: "DSC"}, function(data){
+			$.getJSON("tabelle_ausliefern",{mitarbeiternummer: id, order: sortierung, direction: "ASC"}, function(data){
 				$('.tabelle2').html(data);
 				$('.delx').bind("click", delbind);
 				$('.updx').bind("click", updbind);
@@ -253,7 +255,63 @@
 				$('.tid').bind('mouseleave', tidl);
 				$('.state').bind('mouseenter', statee);
 				$('.state').bind('mouseleave', statel);
-         		$('.begin').bind('mouseenter', begine);
+                $('.begin').bind('mouseenter', begine);
+				$('.begin').bind('mouseleave', beginl);
+				$('.end').bind('mouseenter', ende);
+				$('.end').bind('mouseleave', endl);
+				$('.zeit').bind('mouseenter', zeite);
+				$('.zeit').bind('mouseleave', zeitl);
+				$('.upd').bind('mouseenter', upde);
+				$('.upd').bind('mouseleave', updl);
+				$('.del').bind('mouseenter', dele);
+				$('.del').bind('mouseleave', dell);
+				$('tr').bind('mouseenter', tre);
+				$('tr').bind('mouseleave', trl);
+				$('.timerow').bind('mouseenter', timerowe);
+				$('.timerow').bind('mouseleave', timerowl);
+					});	
+	}
+	
+	function sortierte_ausgabe(){
+	var sortierung = "status";		
+	var id = $("#mitarbeiter_id").val();
+			$.getJSON("tabelle_ausliefern",{mitarbeiternummer: id, order: sortierung, direction: "ASC"}, function(data){
+				$('.tabelle2').html(data);
+				$('.delx').bind("click", delbind);
+				$('.updx').bind("click", updbind);
+				$('.tid').bind('mouseenter', tide);
+				$('.tid').bind('mouseleave', tidl);
+				$('.state').bind('mouseenter', statee);
+				$('.state').bind('mouseleave', statel);
+                $('.begin').bind('mouseenter', begine);
+				$('.begin').bind('mouseleave', beginl);
+				$('.end').bind('mouseenter', ende);
+				$('.end').bind('mouseleave', endl);
+				$('.zeit').bind('mouseenter', zeite);
+				$('.zeit').bind('mouseleave', zeitl);
+				$('.upd').bind('mouseenter', upde);
+				$('.upd').bind('mouseleave', updl);
+				$('.del').bind('mouseenter', dele);
+				$('.del').bind('mouseleave', dell);
+				$('tr').bind('mouseenter', tre);
+				$('tr').bind('mouseleave', trl);
+				$('.timerow').bind('mouseenter', timerowe);
+				$('.timerow').bind('mouseleave', timerowl);
+					});	
+	}
+	
+	function sortierte_ausgabe_anfang(){
+	var sortierung = "anfang";		
+	var id = $("#mitarbeiter_id").val();
+			$.getJSON("tabelle_ausliefern",{mitarbeiternummer: id, order: sortierung, direction: "ASC"}, function(data){
+				$('.tabelle2').html(data);
+				$('.delx').bind("click", delbind);
+				$('.updx').bind("click", updbind);
+				$('.tid').bind('mouseenter', tide);
+				$('.tid').bind('mouseleave', tidl);
+				$('.state').bind('mouseenter', statee);
+				$('.state').bind('mouseleave', statel);
+                $('.begin').bind('mouseenter', begine);
 				$('.begin').bind('mouseleave', beginl);
 				$('.end').bind('mouseenter', ende);
 				$('.end').bind('mouseleave', endl);
@@ -274,7 +332,7 @@
 	function updbind(){
 		var id = $(this).attr("id");
 		$.getJSON("edit_time", {id: id}, function(data){
-			$('.tabelle2').html(data);
+			$('.tabelle2').html('<div class="box">' + data + '</div>');
 			$('.submit_ed').bind('click', editfunc);
 		});
 		
@@ -313,7 +371,7 @@
 							$('.tid').bind('mouseleave', tidl);
 							$('.state').bind('mouseenter', statee);
 							$('.state').bind('mouseleave', statel);
-         					$('.begin').bind('mouseenter', begine);
+                            $('.begin').bind('mouseenter', begine);
 							$('.begin').bind('mouseleave', beginl);
 							$('.end').bind('mouseenter', ende);
 							$('.end').bind('mouseleave', endl);
@@ -552,7 +610,7 @@
 	function projbind(){
 		var id = $("#mitarbeiter_id").val();
 		$.getJSON("projekt_zuweisen_formular",{id: id},function(data){
-			$('.box').html('<div class="unselectable">' + id + '</div><strong><p>Mitarbeiter bearbeiten</p></strong>' + data);
+			$('.box').html('<div class="unselectable">' + id + '</div><strong><p>Projekte bearbeiten</p></strong>' + data);
 			$("#projekt_zuweisen").bind('click', projsubmit);
 			$(".projekt_loeschen").bind('click', projdel);
 		});
@@ -562,7 +620,7 @@
 	function projbind2(){
 		var id = $(".unselectable").html();
 		$.getJSON("projekt_zuweisen_formular",{id: id},function(data){
-			$('.box').html('<div class="unselectable">' + id + '</div><strong><p>Mitarbeiter bearbeiten</p></strong>' + data);
+			$('.box').html('<div class="unselectable">' + id + '</div><strong><p>Projekte bearbeiten</p></strong>' + data);
 			$("#projekt_zuweisen").bind('click', projsubmit);
 			$(".projekt_loeschen").bind('click', projdel);
 		});

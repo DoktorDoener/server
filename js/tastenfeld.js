@@ -39,24 +39,18 @@ else if(taste=='eingabe')
 		
 	else
 	{
-		
-		
-		
 
-		
 		id = $("#mitarbeiter_id").val();
 		pw = $('#secret').html();
 				
 		$.getJSON("status_ausliefern", {mitarbeiternummer: id, passwort: pw}, function(data)
 			{
-				// an welcher Stelle soll ausgeliefert werden?
 				$('#Tastenfeld').fadeOut(2000);
 				$('#mitarbeiter_id').fadeOut(2000);
 				$('#optionen').html(data);
 				$('#optionen').delay(2000).fadeIn(3000);		
 			});
 			
-		
 		// passwort löschen
 		$('#secret').html("");
 		$('#TArea').html("");	
@@ -71,11 +65,5 @@ else {
 	
 	
 }
-/*
-$('#logout_button').click(function () {
 
-    location.reload();
-
-});
-*/
 };
